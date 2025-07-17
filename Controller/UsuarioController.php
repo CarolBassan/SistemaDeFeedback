@@ -1,10 +1,11 @@
 <?php
-require_once '../config/Conexao.php';
-require_once '../models/Usuario.php';
+require_once '../Config/Conexao.php';
+require_once '../Model/Usuario.php';
 
 session_start();
 
-$db = (new Database())->getConnection();
+
+$db = Conexao::getConexao();
 $usuario = new Usuario($db);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
