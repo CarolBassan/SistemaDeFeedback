@@ -5,5 +5,5 @@ if (!defined('HOME')) {
 }
 
 if (!defined('SRC')) {
-	define('SRC', __DIR__);
+	define('SRC', dirname(__DIR__));
 }
