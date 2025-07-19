@@ -5,10 +5,18 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   background-color: white;
+  display: flex;
+  flex-direction: column;
   color: black;
   line-height: 1.6;
+  min-height: 100vh;
 }
 
 .container {
@@ -334,13 +342,17 @@ textarea {
   color: #27ae60;
 }
 
+span {
+  margin-right: 20px;
+}
+
 footer {
   background: #fff;
-  color: darkgrey;
+  color: rgb(120, 120, 120);
   text-align: center;
   padding: 18px 0 12px 0;
-  font-size: 15px;
-  margin-top: 40px;
+  font-size: 12px;
+  margin-top: auto;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
 }
 
