@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('HOME')) {
-	define('HOME', '/SistemaDeFeedback/');
+	define('HOME', '/SistemaDeFeedback');
 }
 
 if (!defined('SRC')) {
