@@ -17,7 +17,7 @@ Rotas::erro('View/404.php');
 Rotas::add('/avaliacoes', 'View/avaliacoes.php', 'id');
 Rotas::add('/avaliacoes', 'View/avaliacoes.php', 'id');
 Rotas::add('/veiculos', 'View/lista-veiculos.php', 'id');
-Rotas::add('/avaliacao', 'View/avaliar-veiculo.php', 'id');
+Rotas::addGet('/avaliacao', 'View/avaliar-veiculo.php', 'id');
 Rotas::add('/agradecimento', 'View/agradecimento.php');
 Rotas::add('/sobre', 'View/sobre.php', 'id');
 Rotas::exec();

@@ -1,6 +1,32 @@
 <?php
 include 'header.php';
+
+
+$id_veiculo = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+if ($id_veiculo <= 0) {
+    die('Veículo inválido ou não especificado.');
+}
+
+// Opcional: buscar o nome do veículo para exibir no título
+require_once SRC . '/Config/Conexao.php';
+
+try {
+    $pdo = Conexao::getConexao();
+    $stmt = $pdo->prepare("SELECT marca, modelo FROM veiculo WHERE id_veiculo = :id");
+    $stmt->execute([':id' => $id_veiculo]);
+    $veiculo = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$veiculo) {
+        die('Veículo não encontrado.');
+    }
+
+    $tituloVeiculo = $veiculo['marca'] . ' ' . $veiculo['modelo'];
+} catch (PDOException $e) {
+    die("Erro ao buscar veículo: " . $e->getMessage());
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -8,7 +34,7 @@ include 'header.php';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Avaliação de Veículos</title>
-    <link rel="stylesheet" href="estilos.css" />
+    <link rel="stylesheet" href="<?= HOME ?>/estilos.css" />
 </head>
 
 <body>
@@ -16,9 +42,12 @@ include 'header.php';
         <div class="vehicle-detail feedback-container">
             <div class="feedback-grid">
                 <div class="review-form">
-                    <h2>Avalie o veículo</h2>
+                    <h2>Avalie o veículo <?= htmlspecialchars($tituloVeiculo) ?></h2>
+
 
                     <form class="feedback-form" method="post" action="processa_avaliacao.php">
+                        <input type="hidden" name="id_veiculo" value="<?= $_GET['id'] ?>">
+
                         <div class="form-group">
                             <label>Título da Avaliação</label>
                             <div class="input-wrapper">

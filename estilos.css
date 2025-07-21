@@ -550,6 +550,7 @@ textarea:focus {
 
 .btn {
   background: var(--primary-color);
+  text-decoration: none;
   color: white;
   border: none;
   padding: 15px 20px;
@@ -593,6 +594,7 @@ textarea:focus {
 
 @media (max-width: 480px) {
   .btn {
+    text-decoration: none;
     padding: 14px 30px;
     font-size: var(--text-sm);
   }

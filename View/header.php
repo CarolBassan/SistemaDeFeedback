@@ -8,10 +8,10 @@ $usuarioLogado = isset($_SESSION['usuario']) ? $_SESSION['usuario'] : 'Usuário'
         </div>
         <button class="menu-toggle">☰</button>
         <nav class="main-nav">
-            <a href="home">Home</a>
-            <a href="avaliacoes">Avaliações</a>
-            <a href="veiculos">Veículos</a>
-            <a href="sobre">Sobre</a>
+            <a href="<?= HOME ?>/home">Home</a>
+            <a href="<?= HOME ?>/avaliacoes">Avaliações</a>
+            <a href="<?= HOME ?>/veiculos">Veículos</a>
+            <a href="<?= HOME ?>/sobre">Sobre</a>
         </nav>
 
         <div class="user-info">

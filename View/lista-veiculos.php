@@ -100,7 +100,8 @@ try {
               <h3><?= htmlspecialchars($v['marca'] . ' ' . $v['modelo']) ?></h3>
               <p><strong>Categoria:</strong> <?= htmlspecialchars($v['categoria']) ?></p>
               <p><strong>Ano:</strong> <?= htmlspecialchars($v['ano']) ?></p>
-              <a href="avaliar-veiculo.php?id=<?= $v['id_veiculo'] ?>" class="link">Avaliar este veículo</a>
+              <a href="<?= HOME ?>/avaliacao/<?= $v['id_veiculo'] ?>" class="link">Avaliar este veículo</a>
+
             </div>
           </div>
         <?php endforeach; ?>

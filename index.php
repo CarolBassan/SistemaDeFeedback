@@ -35,6 +35,7 @@ include 'View/header.php';
             </div>
         </div>
     </main>
+    <script src="script.js"></script>
 </body>
 
 </html>
@@ -42,5 +43,3 @@ include 'View/header.php';
 <?php
 include 'View/footer.php';
 ?>
-
-</html>
