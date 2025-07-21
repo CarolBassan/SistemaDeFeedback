@@ -1,5 +1,6 @@
 <?php
 include_once __DIR__ . '/Routes/ConfigRotas.php';
+include 'View/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -7,8 +8,10 @@ include_once __DIR__ . '/Routes/ConfigRotas.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
     <title>Sistema de Feedback de Veículos</title>
-    <link rel="stylesheet" href="View/estilos.css">
+
+
     <style>
         body {
             background: #f6f7fb;
@@ -71,4 +74,10 @@ include_once __DIR__ . '/Routes/ConfigRotas.php';
         <a href="cadastro-usuario" class="btn">Cadastrar-se</a>
         <a href="cadastro-veiculo" class="btn">Cadastrar Veículo</a>
     </div>
+    <script src="script.js"></script>
 </body>
+
+<?php
+include 'View/footer.php';
+?>
+</html>
