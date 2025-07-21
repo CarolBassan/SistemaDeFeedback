@@ -180,7 +180,6 @@ nav a {
 
 nav a:hover {
   color: var(--light-gray);
-  
 }
 
 .user-info {
@@ -320,6 +319,7 @@ nav a:hover {
 
 .vehicle-card:hover img {
   transform: scale(1.05);
+  transition: transform 0.3s ease;
 }
 
 .vehicle-info {
@@ -461,9 +461,22 @@ nav a:hover {
 }
 
 .form-group {
-
   justify-content: center;
   align-items: center;
+}
+
+.combo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: var(--text-base);
+  background-color: white;
 }
 
 .form-group label {
@@ -532,6 +545,7 @@ textarea:focus {
 
 .link:hover {
   color: var(--gray);
+  text-decoration: none;
 }
 
 .btn {
@@ -549,7 +563,7 @@ textarea:focus {
   text-align: center;
   width: 100%;
   max-width: 300px;
-  margin: 50px auto 0;
+  margin: 0px auto 0;
 }
 
 .btn:hover {
@@ -781,4 +795,25 @@ footer {
 .gif-container img {
   height: 100%;
   border-radius: 5px;
+}
+
+.filtros-container {
+  display: flex;
+  gap: 15px;
+
+  margin-bottom: 30px;
+  margin-top: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filtros-container select {
+  padding: 8px 12px;
+  font-size: 16px;
+}
+
+.filtros-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
