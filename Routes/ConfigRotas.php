@@ -14,6 +14,7 @@ Rotas::addGet('/usuario-controller', 'Controller/UsuarioController.php', 'functi
 Rotas::addGet('/veiculo-controller', 'Controller/VeiculoController.php', 'function');
 Rotas::erro('View/404.php');
 Rotas::addGet('/avaliacoes', 'View/avaliacoes.php', 'id');
+Rotas::add('/avaliacao', 'View/avaliacao.php', 'id');
 Rotas::add('/veiculos', 'View/lista-veiculos.php', 'id');
 Rotas::addGet('/sobre', 'View/sobre.php', 'id');
 Rotas::exec();
