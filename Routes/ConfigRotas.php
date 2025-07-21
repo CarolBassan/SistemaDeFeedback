@@ -8,12 +8,18 @@ Rotas::add('/home', 'index.php');
 Rotas::add('/cadastro-usuario', 'View/cad_usuario.php');
 Rotas::add('/cadastro-veiculo', 'View/cad_veiculo.php');
 Rotas::add('/sucesso', 'View/sucesso.php');
-Rotas::addGetInt('/editar-veiculo', 'View/edit_veiculo.php', 'id');
-Rotas::addGet('/login-controller', 'Controller/LoginController.php', 'function');
-Rotas::addGet('/usuario-controller', 'Controller/UsuarioController.php', 'function');
-Rotas::addGet('/veiculo-controller', 'Controller/VeiculoController.php', 'function');
+Rotas::add('/editar-veiculo', 'View/edit_veiculo.php', 'id');
+Rotas::add('/dashboard', 'View/dashboard.php', 'id');
+
+// 🚨 Corrigido para aceitar GET ou POST com função na query
+Rotas::addExpReg('/login-controller(\?function=\w+)?', 'Controller/LoginController.php');
+Rotas::addExpReg('/usuario-controller(\?function=\w+)?', 'Controller/UsuarioController.php');
+Rotas::addExpReg('/veiculo-controller(\?function=\w+)?', 'Controller/VeiculoController.php');
+
 Rotas::erro('View/404.php');
-Rotas::addGet('/avaliacoes', 'View/avaliacoes.php', 'id');
-Rotas::addGet('/veiculos', 'View/veiculos.php', 'id');
-Rotas::addGet('/sobre', 'View/sobre.php', 'id');
+
+Rotas::add('/avaliacoes', 'View/avaliacoes.php', 'id');
+Rotas::add('/veiculos', 'View/veiculos.php', 'id');
+Rotas::add('/sobre', 'View/sobre.php', 'id');
+
 Rotas::exec();
