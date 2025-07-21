@@ -26,7 +26,8 @@ include 'header.php';
             <p>Preencha os campos abaixo para se cadastrar no sistema de avaliação e feedback de veículos</p>
         </div>
 
-        <form method="POST" action="Controller/UsuarioController.php?function=cadastrar">
+        <form method="POST" action="<?= HOME ?>/usuario-controller">
+            <input type="hidden" name="acao" value="cadastrar">
             <div class="form-group">
                 <label for="nome">Nome Completo</label>
                 <div class="input-wrapper">

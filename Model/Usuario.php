@@ -1,38 +1,44 @@
 <?php
-class Usuario {
+class Usuario
+{
     private $conn;
-    private $table = "usuarios";
+    private $table = "usuario";
 
-    public $id;
+    public $id_user;
     public $nome;
+    public $CPF;
     public $email;
     public $senha;
-    public $perfil;
+    public $tipo;
 
-    public function __construct($db) {
+    public function __construct($db)
+    {
         $this->conn = $db;
     }
 
-    public function cadastrar() {
-        $query = "INSERT INTO " . $this->table . " SET nome=:nome, email=:email, senha=:senha, perfil=:perfil";
+    public function cadastrar()
+    {
+        $query = "INSERT INTO " . $this->table . " SET nome=:nome, CPF=:CPF, email=:email, senha=:senha, tipo=:tipo";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":nome", $this->nome);
+        $stmt->bindParam(":CPF", $this->CPF);
         $stmt->bindParam(":email", $this->email);
-        $stmt->bindParam(":senha", password_hash($this->senha, PASSWORD_DEFAULT));
-        $stmt->bindParam(":perfil", $this->perfil);
+        $stmt->bindParam(":senha", $this->senha);
+        $stmt->bindParam(":tipo", $this->tipo);
         return $stmt->execute();
     }
 
-    public function login() {
+    public function login()
+    {
         $query = "SELECT * FROM " . $this->table . " WHERE email=:email";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":email", $this->email);
         $stmt->execute();
 
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($usuario && password_verify($this->senha, $usuario['senha'])) {
-            $_SESSION['usuario_id'] = $usuario['id'];
-            $_SESSION['usuario_perfil'] = $usuario['perfil'];
+        if ($usuario && $this->senha === $usuario['senha']) {
+            $_SESSION['usuario_id'] = $usuario['id_user'];
+            $_SESSION['usuario_tipo'] = $usuario['tipo'];
             return true;
         }
         return false;

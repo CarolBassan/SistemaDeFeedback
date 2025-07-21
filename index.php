@@ -1,6 +1,11 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 include_once __DIR__ . '/Routes/ConfigRotas.php';
 include 'View/header.php';
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -80,4 +85,5 @@ include 'View/header.php';
 <?php
 include 'View/footer.php';
 ?>
+
 </html>

@@ -25,8 +25,8 @@ include 'header.php';
             <h2>Bem-vindo</h2>
             <p>Por favor, preencha os campos abaixo para acessar o sistema de avaliação e feedback de veículos</p>
         </div>
-
-        <form method="POST" action="Controller/LoginController.php?function=login">
+        <form method="POST" action="<?= HOME ?>/login-controller">
+            <input type="hidden" name="acao" value="login">
             <div class="form-group">
                 <label for="email">Usuário</label>
                 <div class="input-wrapper">
