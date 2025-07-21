@@ -911,7 +911,7 @@ footer {
 }
 
 .login-container {
-  text-align: center;
+  
   max-width: 500px;
   margin: 50px auto;
   padding: 40px;
@@ -1060,7 +1060,7 @@ footer {
 }
 /* DADOS DO VEÍCULO */
 .vehicle-info {
-  display: flex;
+  display: block;
   gap: 30px;
   margin-bottom: 40px;
   background: white;
