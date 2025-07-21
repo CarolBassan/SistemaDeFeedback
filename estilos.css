@@ -3,7 +3,8 @@
   --primary-color: black;
   --secondary-color: rgb(40, 40, 40);
   --accent-color: red;
-  --light-gray: rgb(140, 140, 140);
+  --light-gray: rgb(190, 190, 190);
+  --gray: rgb(140, 140, 140);
   --dark-gray: rgb(70, 70, 70);
   --text-color: black;
   --text-light: rgb(149, 165, 166);
@@ -107,12 +108,24 @@ small,
   text-align: center;
 }
 
-.error-message {
-  color: var(--accent-color);
+.error-container {
+  max-width: 700px;
+  display: block;
+  margin: 55px auto 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-container p {
   text-align: center;
-  margin-top: 15px;
-  font-weight: 500;
-  font-size: var(--text-sm);
+}
+
+.error-message {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: auto;
 }
 
 /* Header Moderno */
@@ -122,7 +135,6 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .header-content {
@@ -168,7 +180,7 @@ nav a {
 
 nav a:hover {
   color: var(--light-gray);
-  background-color: rgba(255, 255, 255, 0.1);
+  
 }
 
 .user-info {
@@ -449,14 +461,13 @@ nav a:hover {
 }
 
 .form-group {
-  margin-bottom: 25px;
+
   justify-content: center;
   align-items: center;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 8px;
   font-weight: 600;
   color: var(--text-color);
   font-size: var(--text-base);
@@ -520,7 +531,7 @@ textarea:focus {
 }
 
 .link:hover {
-  color: var(--light-gray);
+  color: var(--gray);
 }
 
 .btn {
@@ -671,19 +682,19 @@ footer {
 /* Estilos para inputs modernos */
 .input-wrapper {
   position: relative;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 25px;
 }
 
 .input-wrapper input {
   width: 100%;
-  padding: 18px 15px 8px 15px;
+  padding: 10px 15px 10px 0;
   border: none;
   border-bottom: 2px solid var(--dark-gray);
   background-color: transparent;
   font-size: var(--text-base);
   transition: all 0.3s;
-  z-index: 1;
+  z-index: 0;
   position: relative;
 }
 
@@ -694,7 +705,7 @@ footer {
 
 .input-placeholder {
   position: absolute;
-  left: 15px;
+  left: 0px;
   top: 50%;
   transform: translateY(-50%);
   color: var(--dark-gray);
@@ -757,4 +768,17 @@ footer {
 }
 .vehicle-card:nth-child(6) {
   animation-delay: 0.6s;
+}
+
+.gif-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 25px auto;
+  height: 200px;
+}
+
+.gif-container img {
+  height: 100%;
+  border-radius: 5px;
 }

@@ -1,107 +1,104 @@
+<?php
+session_start();
+if (isset($_SESSION['sessaoID'])) {
+    header('location:home.php');
+}
+?>
+
+<?php
+include 'header.php';
+?>
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário</title>
-    <link rel="stylesheet" href="../View/estilos.css">
-    <style>
-        /* Ajustes para lembrar o visual do Home Tester Club */
-        body {
-            background: #f6f7fb;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            background: #fff;
-            max-width: 400px;
-            margin: 60px auto 0 auto;
-            padding: 40px 30px 30px 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-        }
-
-        h2 {
-            color: #2d3a4b;
-            text-align: center;
-            margin-bottom: 28px;
-            font-weight: 600;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            color: #4a5568;
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px 12px;
-            margin-bottom: 18px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            background: #f9fafb;
-            font-size: 15px;
-            transition: border 0.2s;
-        }
-
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="password"]:focus {
-            border: 1.5px solid #3bb77e;
-            outline: none;
-            background: #fff;
-        }
-
-        button[type="submit"] {
-            width: 100%;
-            background: #3bb77e;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            padding: 12px 0;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-            margin-top: 10px;
-        }
-
-        button[type="submit"]:hover {
-            background: #329e6b;
-        }
-
-        @media (max-width: 500px) {
-            .container {
-                padding: 25px 10px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>
-    <div class="container">
-        <h2>Cadastro de Usuário</h2>
-        <form action="../Controller/UsuarioController.php" method="POST">
-            <input type="hidden" name="acao" value="cadastrar">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
+    <div class="login-container">
+        <div class="login-header">
+            <h2>Criar Conta</h2>
+            <p>Preencha os campos abaixo para se cadastrar no sistema de avaliação e feedback de veículos</p>
+        </div>
 
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
+        <form method="POST" action="Controller/UsuarioController.php?function=cadastrar">
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <div class="input-wrapper">
+                    <input type="text" id="nome" name="nome" placeholder=" " required />
+                    <span class="input-placeholder">Digite seu nome completo</span>
+                    <div class="input-highlight"></div>
+                </div>
+            </div>
 
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" required>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <div class="input-wrapper">
+                    <input type="email" id="email" name="email" placeholder=" " required />
+                    <span class="input-placeholder">Digite seu e-mail</span>
+                    <div class="input-highlight"></div>
+                </div>
+            </div>
 
-            <button type="submit">Cadastrar</button>
+
+            <div class="form-group">
+                <label for="CPF">CPF</label>
+                <div class="input-wrapper">
+                    <input type="text" id="CPF" name="CPF" placeholder=" " required />
+                    <span class="input-placeholder">Digite seu CPF</span>
+                    <div class="input-highlight"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <div class="input-wrapper">
+                    <input type="password" id="senha" name="senha" placeholder=" " required />
+                    <span class="input-placeholder">Crie uma senha</span>
+                    <div class="input-highlight"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmar_senha">Confirmar Senha</label>
+                <div class="input-wrapper">
+                    <input type="password" id="confirmar_senha" name="confirmar_senha" placeholder=" " required />
+                    <span class="input-placeholder">Repita a senha</span>
+                    <div class="input-highlight"></div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn" name="cadastrar_button">Cadastrar</button>
+            <a href="login" class="link">Já tem uma conta? Faça login</a>
+
+            <?php if (isset($_GET["erro"])): ?>
+                <div class="error-message">
+                    <?php
+                    switch ($_GET["erro"]) {
+                        case "senhas_nao_conferem":
+                            echo "As senhas não coincidem.";
+                            break;
+                        case "email_existente":
+                            echo "Este e-mail já está cadastrado.";
+                            break;
+                        default:
+                            echo "Ocorreu um erro ao cadastrar. Tente novamente.";
+                    }
+                    ?>
+                </div>
+            <?php endif; ?>
         </form>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
+
+<?php
+include 'footer.php';
+?>

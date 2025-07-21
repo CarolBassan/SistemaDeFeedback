@@ -45,7 +45,7 @@ include 'header.php';
                 </div>
             </div>
             <button type="submit" class="btn" name="login_button">Entrar</button>
-            <a href="cadastro-usuario.php" class="link">Cadastrar Usuário</a>
+            <a href="cadastro-usuario" class="link">Cadastrar Usuário</a>
             <?php if (isset($_GET["erro"])): ?>
                 <div class="error-message">
                     Usuário ou Senha Inválidos.

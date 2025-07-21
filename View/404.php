@@ -4,58 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
     <title>Página não encontrada - Erro 404</title>
-    <style>
-    body {
-        font-family: 'Arial', sans-serif;
-        background-color: #000000;
-        color: #ffffff;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        text-align: center;
-    }
-
-    .error-container {
-        max-width: 500px;
-        padding: 2rem;
-    }
-
-    h1 {
-        color: #ffffff;
-        margin-bottom: 0.5rem;
-    }
-
-    p {
-        font-size: 1.1rem;
-        margin-top: 0;
-        opacity: 0.8;
-    }
-
-    .gif-container {
-        margin: 1.5rem 0;
-        height: 200px;
-    }
-
-    .gif-container img {
-        height: 100%;
-        border-radius: 8px;
-    }
-    </style>
 </head>
-
+<style>
+    body{
+        background-color: var(--primary-color);
+    }
+    h1, h2, p{
+        color: white
+    }
+    .link{
+        color: white
+    }
+</style>
 <body>
     <div class="error-container">
+        <h1 class="error-message">404 - Página não encontrada</h1>
+        <p><br>A página que você procura desapareceu no universo digital...</p>
         <div class="gif-container">
             <img src="https://media.giphy.com/media/3o7aTskHEUdgCQAXde/giphy.gif" alt="Erro 404">
         </div>
-        <h1>404 - Página não encontrada</h1>
-        <p>A página que você procura desapareceu no universo digital...</p>
     </div>
+    <a class="link" href="home">Voltar</a>
 </body>
 
 </html>
