@@ -17,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	}
 }
 
-// Se for GET com função na URL (?function=logout por exemplo)
 if (isset($_GET['function'])) {
 	$metodo = $_GET['function'];
 	if (method_exists($classe, $metodo)) {

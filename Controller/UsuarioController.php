@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
-        // Verificar se email já existe
         $stmt = $db->prepare("SELECT id_user FROM usuario WHERE email = :email");
         $stmt->bindParam(':email', $_POST['email']);
         $stmt->execute();
@@ -25,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
 
-        // Verificar se CPF já existe
         $stmt = $db->prepare("SELECT id_user FROM usuario WHERE CPF = :CPF");
         $stmt->bindParam(':CPF', $_POST['CPF']);
         $stmt->execute();

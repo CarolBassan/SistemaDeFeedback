@@ -17,12 +17,9 @@ $avaliacoes = [
     ]
 ];
 
-// Cálculos estatísticos
 $total_avaliacoes = count($avaliacoes);
 $soma_ratings = array_sum(array_column($avaliacoes, 'rating'));
 $media_ratings = $total_avaliacoes > 0 ? $soma_ratings / $total_avaliacoes : 0;
-
-// Contagem por estrela
 $contagem_estrelas = array_fill(1, 5, 0);
 foreach ($avaliacoes as $avaliacao) {
     $contagem_estrelas[$avaliacao['rating']]++;
@@ -52,16 +49,16 @@ foreach ($avaliacoes as $avaliacao) {
 
                 <div class="rating-details">
                     <?php for ($i = 5; $i >= 1; $i--): ?>
-                    <div class="rating-bar">
-                        <span class="stars"><?= str_repeat('★', $i) ?></span>
-                        <div class="progress-container">
-                            <div class="progress-bar"
-                                style="width: <?= $total_avaliacoes > 0 ? ($contagem_estrelas[$i] / $total_avaliacoes) * 100 : 0 ?>%">
+                        <div class="rating-bar">
+                            <span class="stars"><?= str_repeat('★', $i) ?></span>
+                            <div class="progress-container">
+                                <div class="progress-bar"
+                                    style="width: <?= $total_avaliacoes > 0 ? ($contagem_estrelas[$i] / $total_avaliacoes) * 100 : 0 ?>%">
+                                </div>
                             </div>
+                            <span
+                                class="percentage"><?= $total_avaliacoes > 0 ? round(($contagem_estrelas[$i] / $total_avaliacoes) * 100) : 0 ?>%</span>
                         </div>
-                        <span
-                            class="percentage"><?= $total_avaliacoes > 0 ? round(($contagem_estrelas[$i] / $total_avaliacoes) * 100) : 0 ?>%</span>
-                    </div>
                     <?php endfor; ?>
                 </div>
             </div>
@@ -71,25 +68,25 @@ foreach ($avaliacoes as $avaliacao) {
 
             <div class="reviews-list">
                 <?php if ($total_avaliacoes > 0): ?>
-                <?php foreach ($avaliacoes as $avaliacao): ?>
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="review-author"><?= $avaliacao['nome'] ?></div>
-                        <div class="review-rating">
-                            <?= str_repeat('★', $avaliacao['rating']) ?><?= str_repeat('☆', 5 - $avaliacao['rating']) ?>
+                    <?php foreach ($avaliacoes as $avaliacao): ?>
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-author"><?= $avaliacao['nome'] ?></div>
+                                <div class="review-rating">
+                                    <?= str_repeat('★', $avaliacao['rating']) ?><?= str_repeat('☆', 5 - $avaliacao['rating']) ?>
+                                </div>
+                                <div class="review-date"><?= date('d/m/Y', strtotime($avaliacao['data'])) ?></div>
+                            </div>
+                            <div class="review-content">
+                                <p><?= $avaliacao['comentario'] ?></p>
+                            </div>
+                            <div class="review-recommend <?= $avaliacao['recomenda'] ? 'recommended' : 'not-recommended' ?>">
+                                <?= $avaliacao['recomenda'] ? '✔ Recomenda este veículo' : '✖ Não recomenda este veículo' ?>
+                            </div>
                         </div>
-                        <div class="review-date"><?= date('d/m/Y', strtotime($avaliacao['data'])) ?></div>
-                    </div>
-                    <div class="review-content">
-                        <p><?= $avaliacao['comentario'] ?></p>
-                    </div>
-                    <div class="review-recommend <?= $avaliacao['recomenda'] ? 'recommended' : 'not-recommended' ?>">
-                        <?= $avaliacao['recomenda'] ? '✔ Recomenda este veículo' : '✖ Não recomenda este veículo' ?>
-                    </div>
-                </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
                 <?php else: ?>
-                <p class="no-reviews">Este veículo ainda não possui avaliações.</p>
+                    <p class="no-reviews">Este veículo ainda não possui avaliações.</p>
                 <?php endif; ?>
             </div>
         </div>

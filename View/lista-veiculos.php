@@ -5,17 +5,13 @@ include 'header.php';
 try {
   $pdo = Conexao::getConexao();
 
-  // Captura dos filtros
   $marca = isset($_GET['marca']) ? trim($_GET['marca']) : '';
   $modelo = isset($_GET['modelo']) ? trim($_GET['modelo']) : '';
   $categoria = isset($_GET['categoria']) ? trim($_GET['categoria']) : '';
-
-  // Buscar valores únicos para os selects
   $marcas = $pdo->query("SELECT DISTINCT marca FROM veiculo ORDER BY marca")->fetchAll(PDO::FETCH_COLUMN);
   $modelos = $pdo->query("SELECT DISTINCT modelo FROM veiculo ORDER BY modelo")->fetchAll(PDO::FETCH_COLUMN);
   $categorias = $pdo->query("SELECT DISTINCT categoria FROM veiculo ORDER BY categoria")->fetchAll(PDO::FETCH_COLUMN);
 
-  // Montagem da query com filtros
   $sql = "SELECT * FROM veiculo WHERE 1=1";
   $params = [];
 
@@ -55,8 +51,6 @@ try {
 
   <div class="container">
     <h1 class="text-4xl">Veículos Disponíveis</h1>
-
-    <!-- Container dos filtros -->
     <form method="GET" class="filtros-container">
       <select id="marca" name="marca">
         <option value="">Filtrar por Marca</option>
@@ -88,7 +82,6 @@ try {
       <button type="submit" class="btn">Aplicar Filtros</button>
     </form>
 
-    <!-- Lista de Veículos -->
     <div class="vehicle-list">
       <?php if (empty($veiculos)): ?>
         <p>Nenhum veículo encontrado com os filtros informados.</p>

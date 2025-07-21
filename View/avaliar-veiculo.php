@@ -8,7 +8,6 @@ if ($id_veiculo <= 0) {
     die('Veículo inválido ou não especificado.');
 }
 
-// Opcional: buscar o nome do veículo para exibir no título
 require_once SRC . '/Config/Conexao.php';
 
 try {
