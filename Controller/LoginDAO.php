@@ -24,7 +24,7 @@ class LoginDAO
 			session_start();
 			$_SESSION['usuario_id'] = $linha['id_user'];
 			$_SESSION['usuario_tipo'] = $linha['tipo'];
-			header('Location:' . HOME . '/dashboard');
+			header('Location:' . HOME . '/user-dashboard');
 			exit();
 		} else {
 			header('Location: ' . HOME . '/login?erro=1');
