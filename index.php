@@ -1,4 +1,5 @@
 <?php
+include_once __DIR__ . '/Routes/ConfigRotas.php';
 include 'View/header.php';
 ?>
 
